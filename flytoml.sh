@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 随机US节点
-cities=("atl" "bos" "den" "dfw" "ewr" "iad" "mia" "ord")
+cities=("bog" "eze" "gig" "gdl" "gru" "lhr" "mad" "sea")
 index=$(($RANDOM % ${#cities[@]}))
 selected_city=${cities[$index]}
 
