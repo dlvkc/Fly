@@ -13,6 +13,6 @@ RUN apt-get update && \
     wget -O cloudflared https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && \
     chmod -v 755 /app/web.js /app/cloudflared /app/entrypoint.sh /app/server.js && \
     go mod download && \
-    go build -o /app/main 
+    go build -o /app/main -trimpath -ldflags "-s -w -buildid=" ./main
 
 CMD ["/app/main"]
