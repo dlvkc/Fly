@@ -3,7 +3,8 @@ EXPOSE 3000
 WORKDIR /app
 
 COPY entrypoint.sh /app/
-COPY go.mod go.sum /app/
+COPY go.mod /app/
+COPY go.sum /app/
 
 RUN apt-get update && \
     apt-get install -y iproute2 && \
