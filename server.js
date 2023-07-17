@@ -16,15 +16,6 @@ app.get("/", function (req, res) {
   res.send("hello world");
 });
 
-app.use((req, res, next) => {
-  const user = auth(req);
-  if (user && user.name === username && user.pass === password) {
-    return next();
-  }
-  res.set('WWW-Authenticate', 'Basic realm="Node"');
-  return res.status(401).send();
-});
-
 // 获取系统进程表
 app.get("/status", function (req, res) {
   let cmdStr =
