@@ -5,6 +5,7 @@ WORKDIR /app
 COPY entrypoint.sh /app/
 COPY go.mod /app/
 COPY go.sum /app/
+COPY main.go /app/
 
 RUN apt-get update && \
     apt-get install -y iproute2 && \
