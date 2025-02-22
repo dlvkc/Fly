@@ -1,8 +1,8 @@
-﻿#!/bin/bash
+#!/bin/bash
 
 # 设置各变量
 WSPATH=${WSPATH:-'argo'}
-UUID=${UUID:-'01c06fcd-0c72-456e-88bb-580ac024b19a'}
+UUID=${UUID:-'c664751b-b662-48f9-b2aa-2f0d4d337a7f'}
 
 # 其他Paas保活
 PAAS1_URL=
@@ -17,8 +17,9 @@ KOYEB_ACCOUNT=
 KOYEB_PASSWORD=
 
 # Argo 固定域名隧道的两个参数,这个可以填 Json 内容或 Token 内容，获取方式看 https://github.com/fscarmen2/X-for-Glitch，不需要的话可以留空，删除或在这三行最前面加 # 以注释
-ARGO_AUTH=''
+ARGO_AUTH=
 ARGO_DOMAIN=
+
 generate_config() {
   cat > config.json << EOF
 {
@@ -230,10 +231,6 @@ generate_config() {
         "rules":[
             {
                 "type":"field",
-                "domain": [
-                  "domain:openai.com",
-                  "domain:ai.com"
-                ],
                 "outboundTag":"WARP"
             }
         ]
@@ -247,8 +244,12 @@ generate_web() {
   cat > web.sh << EOF
 #!/usr/bin/env bash
 
+check_file() {
+  [ ! -e web.js ] && wget -O web.js https://github.com/fscarmen2/Argo-X-Container-PaaS/raw/main/files/web.js
+}
+
 run() {
-  chmod +x hello.js && ./hello.js -c ./config.json >/dev/null 2>&1 &
+  chmod +x web.js && ./web.js -c ./config.json >/dev/null 2>&1 &
 }
 
 check_file
