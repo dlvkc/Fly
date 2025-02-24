@@ -12,6 +12,6 @@ RUN apt-get update &&\
     npm install -r package.json &&\
     wget -O cloudflared https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 &&\
     npm install -g pm2 &&\
-    chmod -v 755 web.js cloudflared entrypoint.sh server.js
+    chmod -v 755 aaa cloudflared entrypoint.sh server.js
 
 ENTRYPOINT [ "node", "server.js" ]
