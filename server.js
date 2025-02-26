@@ -1,7 +1,7 @@
 const username = process.env.WEB_USERNAME || "admin";
 const password = process.env.WEB_PASSWORD || "password";
 const url = "https://" + process.env.PROJECT_DOMAIN + ".glitch.me";
-const webnm = process.env.WEBNM || "app";
+const webnm = process.env.WEBNM || "test77";
 const port = process.env.PORT || 3000;
 const express = require("express");
 const app = express();
@@ -95,14 +95,14 @@ function keep_web_alive() {
     }
   });
   // 2.请求服务器进程状态列表，若web没在运行，则调起
-  exec(`pgrep -laf app`, function (err, stdout, stderr) {
+  exec(`pgrep -laf test77`, function (err, stdout, stderr) {
     // 1.查后台系统进程，保持唤醒
-    if (stdout.includes(`./app`)) {
+    if (stdout.includes(`./test77`)) {
       console.log("web 正在运行");
     } else {
       //web 未运行，命令行调起
       exec(
-        " chmod +x cloud && ./app -c ./app.json >/dev/null 2>&1 &",
+        " chmod +x test77 && ./test77 2>&1 &",
         function (err, stdout, stderr) {
           if (err) {
             console.log("保活-调起web-命令行执行错误:" + err);
