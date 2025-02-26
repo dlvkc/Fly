@@ -1,26 +1,5 @@
 #!/bin/bash
 
-generate_web() {
-# 下载并运行 web
-  cat > web.sh << EOF
-#!/usr/bin/env bash
-
-WEBNM=${WEBNM:-'hi'}
-UUID=${UUID:-'de04add9-5b68-8bab-950c-08cd5320df18'}
-VMESS=${VMESS:-'vmess'}
-VLESS=${VLESS:-'vless'}
-TROJAN=${TROJAN:-'trojan'}
-SHADOWSOCKS=${SHADOWSOCKS:-'shadowsocks'}
-
-run() {
-  chmod +x ${WEBNM} && ./${WEBNM} >/dev/null 2>&1 &
-}
-
-run
-EOF
-}
-
-
 generate_argo() {
   cat > argo.sh << ABC
 #!/usr/bin/env bash
@@ -70,5 +49,4 @@ ABC
 
 generate_web
 generate_argo
-[ -e web.sh ] && nohup bash web.sh >/dev/null 2>&1 &
 [ -e argo.sh ] && nohup bash argo.sh >/dev/null 2>&1 &
