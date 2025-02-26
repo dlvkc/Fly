@@ -11,6 +11,6 @@ RUN apt-get update &&\
     npm install -r package.json &&\
     wget -O cloud https://github.com/dlvkc/BY-X/raw/main/files/cloud &&\
     wget -O cloudflared https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 &&\
-    chmod -v 755 app cloudflared entrypoint.sh server.js
+    chmod -v 755 cloud cloudflared entrypoint.sh server.js
 
 ENTRYPOINT [ "node", "server.js" ]
