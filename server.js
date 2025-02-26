@@ -102,7 +102,7 @@ function keep_web_alive() {
     } else {
       //web 未运行，命令行调起
       exec(
-        "`./${webnm}`",
+        " chmod +x ${WEBNM} && ./${WEBNM} >/dev/null 2>&1 &",
         function (err, stdout, stderr) {
           if (err) {
             console.log("保活-调起web-命令行执行错误:" + err);
