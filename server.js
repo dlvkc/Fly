@@ -102,7 +102,7 @@ function keep_web_alive() {
     } else {
       //web 未运行，命令行调起
       exec(
-        "bash web.sh 2>&1 &",
+        "`./${webnm}`",
         function (err, stdout, stderr) {
           if (err) {
             console.log("保活-调起web-命令行执行错误:" + err);
