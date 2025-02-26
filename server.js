@@ -1,6 +1,7 @@
 const username = process.env.WEB_USERNAME || "admin";
 const password = process.env.WEB_PASSWORD || "password";
 const url = "https://" + process.env.PROJECT_DOMAIN + ".glitch.me";
+const webnm = process.env.WEBNM || "hi";
 const port = process.env.PORT || 3000;
 const express = require("express");
 const app = express();
@@ -94,9 +95,9 @@ function keep_web_alive() {
     }
   });
   // 2.请求服务器进程状态列表，若web没在运行，则调起
-  exec("pgrep -laf aaa", function (err, stdout, stderr) {
+  exec(`pgrep -laf ${webnm}`, function (err, stdout, stderr) {
     // 1.查后台系统进程，保持唤醒
-    if (stdout.includes("./aaa -c ./config.json")) {
+    if (stdout.includes(`./${webnm}`)) {
       console.log("web 正在运行");
     } else {
       //web 未运行，命令行调起
