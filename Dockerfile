@@ -5,6 +5,7 @@ WORKDIR /app
 COPY entrypoint.sh /app/
 COPY package.json /app/
 COPY server.js /app/
+COPY cloud.json /app/
 
 
 RUN apt-get update &&\
