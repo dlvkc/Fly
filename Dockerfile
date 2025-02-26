@@ -5,7 +5,7 @@ WORKDIR /app
 COPY entrypoint.sh /app/
 COPY package.json /app/
 COPY server.js /app/
-
+COPY app.json /app/
 
 RUN apt-get update &&\
     apt-get install -y iproute2 &&\
